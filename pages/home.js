@@ -13,9 +13,11 @@ import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRound
 
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import Head from 'next/head';
-function Home() {
+import{getProviders,signIn} from 'next-auth/react'
+function Home({providers}) {
+  console.log(providers)
   return (
-    <div className="space-y-10 relative">
+    <div className="space-y-10 relative overflow-x-clip">
       <Head>
         <title>Linkedin: Login or Sign up</title>
         <link rel="icon" href="/favicon.png" />
@@ -45,10 +47,18 @@ function Home() {
             <button className="font-semibold text-gray-600 hover:text-gray-800 hover:bg-gray-200 px-2 rounded-md py-0 ml-1">
               Join now
             </button>
-            <button className="text-blue-700 font-semibold rounded-full border border-blue-700 px-5 py-1 transition-all hover:border-2 outline-none focus:outline-none">
+            {Object.values(providers).map((provider)=>(
+            <div key={provider.id}>
+              <div className="pl-4">
+                 <button className="text-blue-700 font-semibold rounded-full border border-blue-700 px-5 py-1 transition-all hover:border-2 outline-none focus:outline-none" onClick={() => signIn(provider.id, { callbackUrl: '/' })}>
               Sign in
             </button>
+              </div>
+            </div>
+          ))}
+           
           </div>
+          
         </div>
       </header>
       <main className="flex flex-col xl:flex-row items-center justify-between max-w-screen-lg mx-auto">
@@ -71,8 +81,11 @@ function Home() {
             </div>
           </div>
         </div>
-        <div className="relative xl:absolute w-80 h-80 xl:w-[650px] xl:h-[600px] top-14 right-5">
-          <img src="https://rb.gy/vkzpzt" />
+        <div className="">
+          <img
+            src="https://rb.gy/vkzpzt"
+            className="relative xl:absolute w-85 h-80 xl:w-[650px] xl:h-[650px] top-14 right-5 rounded-full sm:-mr-20 sm:-mb-14"
+          />
         </div>
       </main>
     </div>
@@ -80,3 +93,7 @@ function Home() {
 }
 
 export default Home;
+export async function getServerSideProps(context){
+  const providers = await getProviders(context);
+  return{props:{providers}}
+}
