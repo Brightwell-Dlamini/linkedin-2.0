@@ -7,25 +7,29 @@ import {
   SearchRounded,
   CircleNotifications,
 } from '@mui/icons-material';
+import { getToken } from 'next-auth/jwt';
 import { Avatar } from '@mui/material';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import HeaderLink from './HeaderLink';
 import { motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
+import { useSession, getSession } from 'next-auth/react';
+
 const spring = {
   type: 'spring',
   stiffness: 700,
   damping: 30,
 };
 function Header() {
+  const { data: session } = useSession();
   const [mounted, setMounted] = useState(false);
   const { setTheme, resolvedTheme, theme } = useTheme();
 
   useEffect(() => () => setMounted(true), []);
-  console.log(resolvedTheme);
+  // console.log(session);
   return (
-    <header className="sticky justify-around flex dark:bg-[#1d2226] px-8 py-1 focus-within:shadow-lg  top-0 z-20 left-0 right-0 shadow-md ">
+    <header className="sticky justify-around flex dark:bg-[#1d2226] px-8 py-1 focus-within:shadow-lg  top-0 z-20 left-0 right-0 shadow-md bg-white">
       {/* Left */}
       <div className="flex  items-center space-x-2  max-w-xs   ">
         {mounted && (
@@ -55,7 +59,16 @@ function Header() {
         <HeaderLink Icon={BusinessCenter} text="Jobs" feed hidden />
         <HeaderLink Icon={Chat} text="Messaging" feed />
         <HeaderLink Icon={CircleNotifications} text="Notification" feed />
+        {/* {session ? (
+          <img
+            src={session?.user?.image}
+            alt="profile"
+            className="!h-[24px] !w-[24px] rounded-full"
+          />
+        ) : ( */}
         <HeaderLink Icon={Avatar} text="Me" feed avatar hidden />
+        {/* )} */}
+
         <HeaderLink Icon={AppsOutlined} text="Work" feed hidden />
         {mounted && (
           <div
