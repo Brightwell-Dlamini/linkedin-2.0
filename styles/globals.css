@@ -8,4 +8,7 @@
   .intent {
     @apply flex items-center justify-between hover:shadow-xl p-4 cursor-pointer rounded-lg bg-white text-black max-w-md mx-auto border border-gray-300;
   }
+  .sidebarButton {
+    @apply dark:border-t border-gray-600 py-3 px-4 cursor-pointer opacity-80 hover:opacity-100;
+  }
 }
