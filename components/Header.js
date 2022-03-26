@@ -23,7 +23,7 @@ const spring = {
 };
 function Header() {
   const { data: session } = useSession();
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(true);
   const { setTheme, resolvedTheme, theme } = useTheme();
 
   useEffect(() => () => setMounted(true), []);

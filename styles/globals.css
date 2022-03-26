@@ -11,4 +11,7 @@
   .sidebarButton {
     @apply dark:border-t border-gray-600 py-3 px-4 cursor-pointer opacity-80 hover:opacity-100;
   }
+  .inputButton {
+    @apply flex items-center space-x-2 font-medium cursor-pointer text-sm;
+  }
 }
