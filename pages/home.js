@@ -9,9 +9,8 @@ import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
 
 import Head from 'next/head';
-import{getProviders,signIn} from 'next-auth/react'
-function Home({providers}) {
-
+import { getProviders, signIn } from 'next-auth/react';
+function Home({ providers }) {
   return (
     <div className="space-y-10 relative overflow-x-clip">
       <Head>
@@ -28,28 +27,28 @@ function Home({providers}) {
         </div>
         <div className="flex items-center sm:divide-x divide-gray-300 ">
           <div className="hidden sm:flex space-x-10 pr-4">
-           
             <HeaderLink Icon={ExploreIcon} text="Discover" />
             <HeaderLink Icon={GroupIcon} text="People" />
             <HeaderLink Icon={OndemandVideoSharpIcon} text="Learning" />
             <HeaderLink Icon={BusinessCenterIcon} text="Jobs" />
           </div>
           <div className="flex space-x-4">
-            <button className="font-semibold text-gray-600 hover:text-gray-800 hover:bg-gray-200 px-2 rounded-md py-0 ml-1">
+            <button className="font-semibold text-gray-600 hover:text-gray-800 hover:bg-gray-200 px-2 rounded-md py-0 ml-1 flex-shrink-0">
               Join now
             </button>
-            {Object.values(providers).map((provider)=>(
-            <div key={provider.id}>
-              <div className="pl-4">
-                 <button className="text-blue-700 font-semibold rounded-full border border-blue-700 px-5 py-1 transition-all hover:border-2 outline-none focus:outline-none" onClick={() => signIn(provider.id, { callbackUrl: '/' })}>
-              Sign in
-            </button>
+            {Object.values(providers).map((provider) => (
+              <div key={provider.id}>
+                <div className="pl-4">
+                  <button
+                    className="text-blue-700 font-semibold rounded-full border border-blue-700 px-5 py-1 transition-all hover:border-2 outline-none focus:outline-none flex-shrink-0"
+                    onClick={() => signIn(provider.id, { callbackUrl: '/' })}
+                  >
+                    Sign in
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
-           
+            ))}
           </div>
-          
         </div>
       </header>
       <main className="flex flex-col xl:flex-row items-center justify-between max-w-screen-lg mx-auto">
@@ -84,7 +83,7 @@ function Home({providers}) {
 }
 
 export default Home;
-export async function getServerSideProps(context){
+export async function getServerSideProps(context) {
   const providers = await getProviders(context);
-  return{props:{providers}}
+  return { props: { providers } };
 }

@@ -8,7 +8,7 @@ function Sidebar() {
   const { data: session } = useSession();
   return (
     <div className="space-y-2 min-w-max max-w-lg">
-      <div className="bg-white dark:bg-[#1d2226] rounded-lg overflow-hidden relative flex flex-col items-center text-center border border-gray-300 dark:border-none">
+      <div className="bg-white dark:bg-[#1d2226] rounded-lg overflow-hidden relative flex flex-col items-center text-center border border-gray-300 dark:border-none divide-y divide-gray-300 ">
         <div className="relative w-full h-14">
           <Image src="https://rb.gy/i26zak" alt="logo" layout="fill" priority />
         </div>
@@ -26,7 +26,7 @@ function Sidebar() {
           </p>
         </div>
         <div className="hidden md:inline text-left dark:text-white/75 text-sm">
-          <div className="font-medium sidebarButton space-y-0.5">
+          <div className="font-medium sidebarButton space-y-0.5 my-[12px]">
             <div className="flex justify-between space-x-2 hover:bg-gray-600">
               <h4 className="text-white/60 underline decoration-[#70b5f9] underline-offset-0 font-semibold cursor-pointer  hover:no-underline">
                 Who viewed your profile
@@ -41,6 +41,7 @@ function Sidebar() {
               <p>Grow your network</p>
             </div>
           </div>
+          <div></div>
         </div>
       </div>
     </div>
