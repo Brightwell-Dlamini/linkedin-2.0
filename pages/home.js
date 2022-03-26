@@ -1,21 +1,17 @@
 import React from 'react';
 import Image from 'next/image';
 import HeaderLink from '../components/HeaderLink';
-// import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
-// import HomeIcon from '@mui/icons-material/Home';
-// import GroupIcon from '@mui/icons-material/Group';
-// import ChatIcon from '@mui/icons-material/Chat';
+
 import ExploreIcon from '@mui/icons-material/Explore';
 import GroupIcon from '@mui/icons-material/Group';
 import OndemandVideoSharpIcon from '@mui/icons-material/OndemandVideoSharp';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
 
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import Head from 'next/head';
 import{getProviders,signIn} from 'next-auth/react'
 function Home({providers}) {
-  console.log(providers)
+
   return (
     <div className="space-y-10 relative overflow-x-clip">
       <Head>
@@ -32,12 +28,7 @@ function Home({providers}) {
         </div>
         <div className="flex items-center sm:divide-x divide-gray-300 ">
           <div className="hidden sm:flex space-x-10 pr-4">
-            {/* <HeaderLink Icon={HomeIcon} text="Home" />
-            <HeaderLink Icon={GroupIcon} text="My Network" />
-            <HeaderLink Icon={BusinessCenterIcon} text="Jobs" />
-            <HeaderLink Icon={ChatIcon} text="Messaging" />
-            <HeaderLink Icon={NotificationsIcon} text="Notifications" />
-            <HeaderLink Icon={AccountCircleIcon} text /> */}
+           
             <HeaderLink Icon={ExploreIcon} text="Discover" />
             <HeaderLink Icon={GroupIcon} text="People" />
             <HeaderLink Icon={OndemandVideoSharpIcon} text="Learning" />
