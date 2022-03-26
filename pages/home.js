@@ -33,14 +33,14 @@ function Home({ providers }) {
             <HeaderLink Icon={BusinessCenterIcon} text="Jobs" />
           </div>
           <div className="flex space-x-4">
-            <button className="font-semibold text-gray-600 hover:text-gray-800 hover:bg-gray-200 px-2 rounded-md py-0 ml-1 flex-shrink-0">
+            <button className="font-semibold text-gray-600 hover:text-gray-800 hover:bg-gray-200 px-2 rounded-md py-0 ml-1 whitespace-nowrap">
               Join now
             </button>
             {Object.values(providers).map((provider) => (
               <div key={provider.id}>
                 <div className="pl-4">
                   <button
-                    className="text-blue-700 font-semibold rounded-full border border-blue-700 px-5 py-1 transition-all hover:border-2 outline-none focus:outline-none flex-shrink-0"
+                    className="text-blue-700 font-semibold rounded-full border border-blue-700 px-5 py-1 transition-all hover:border-2 outline-none focus:outline-none whitespace-nowrap"
                     onClick={() => signIn(provider.id, { callbackUrl: '/' })}
                   >
                     Sign in

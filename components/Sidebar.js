@@ -39,7 +39,7 @@ function Sidebar() {
                 <h4>Connections</h4> <span>163</span>
               </div>
 
-              <p>Grow your network</p>
+              <p className="dark:text-white ">Grow your network</p>
             </div>
           </div>
           <div className="sidebarButton space-y-2">

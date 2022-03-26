@@ -1,3 +1,4 @@
+import { getSession } from 'next-auth/react';
 import Head from 'next/head';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
@@ -19,4 +20,17 @@ export default function Home() {
       </main>
     </div>
   );
+}
+export async function getServerSideProps(context) {
+  // check is user is authenticated in the server
+  const session = await getSession(context);
+  if (!session) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/home',
+      },
+    };
+  }
+  return { props: { session } };
 }
